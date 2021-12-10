@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AddSlopePage from "../AddSlopePage/AddSlopePage";
 
 function SlopesListPage() {
 	const [slopes, setSlopes] = useState([]);
@@ -8,7 +9,7 @@ function SlopesListPage() {
 	const getAllSlopes = async () => {
 		try {
 			const response = await axios.get(
-				"http://localhost:5005/api/slope/current"
+				"http://localhost:5005/api/slope/current" //params filter/find
 			);
 			setSlopes(response.data);
 		} catch (error) {
@@ -23,14 +24,16 @@ function SlopesListPage() {
 	return (
 		<div className="SlopesListPage">
 			<h3>Slopes</h3>
+			<Link to={"/slopes/add"}>
+				<button>Add Slope</button>
+			</Link>
 
-			{/* <AddProject refreshProjects={getAllProjects} /> */}
+			{/* <Add refreshProjects={getAllProjects} /> */}
 
 			{slopes.map((oneSlope) => {
-				console.log(oneSlope);
 				return (
 					<div className="SlopeCard card" key={oneSlope._id}>
-						<Link to={"/slopes/" + oneSlope._id}>
+						<Link to={"/slope/detail/" + oneSlope._id}>
 							<img
 								src={oneSlope.image}
 								alt=""

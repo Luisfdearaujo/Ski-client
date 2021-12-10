@@ -12,6 +12,8 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import SlopesListPage from "./pages/SlopesListPage/SlopesListPage";
+import AddSlopePage from "./pages/AddSlopePage/AddSlopePage";
+import SlopeDetailsPage from "./pages/SlopeDetailsPage/SlopeDetailsPage";
 
 function App() {
 	return (
@@ -51,13 +53,16 @@ function App() {
 				/>
 
 				<Route
-					path="/projects"
+					path="/slopes"
 					element={
 						<IsPrivate>
 							<SlopesListPage />
 						</IsPrivate>
 					}
 				/>
+				<Route path="/slopes/add" element={<AddSlopePage />} />
+
+				<Route path="/slope/detail/:slopeId" element={<SlopeDetailsPage />} />
 
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
