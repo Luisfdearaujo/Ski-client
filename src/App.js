@@ -14,6 +14,7 @@ import IsAnon from "./components/IsAnon/IsAnon";
 import SlopesListPage from "./pages/SlopesListPage/SlopesListPage";
 import AddSlopePage from "./pages/AddSlopePage/AddSlopePage";
 import SlopeDetailsPage from "./pages/SlopeDetailsPage/SlopeDetailsPage";
+import EditSlopePage from "./pages/EditSlopePage/EditSlopePage";
 
 function App() {
 	return (
@@ -63,6 +64,8 @@ function App() {
 				<Route path="/slopes/add" element={<AddSlopePage />} />
 
 				<Route path="/slope/detail/:slopeId" element={<SlopeDetailsPage />} />
+
+				<Route path="/slope/edit/:slopeId" element={<EditSlopePage />} />
 
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>

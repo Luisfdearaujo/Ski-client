@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddSlopePage from "../AddSlopePage/AddSlopePage";
+import styles from "./SlopesListPage.css";
 
 function SlopesListPage() {
 	const [slopes, setSlopes] = useState([]);
@@ -29,26 +30,36 @@ function SlopesListPage() {
 			</Link>
 
 			{/* <Add refreshProjects={getAllProjects} /> */}
-
-			{slopes.map((oneSlope) => {
-				return (
-					<div className="SlopeCard card" key={oneSlope._id}>
-						<Link to={"/slope/detail/" + oneSlope._id}>
-							<img
-								src={oneSlope.image}
-								alt=""
-								style={{ height: "300px", overflow: "scroll" }}
-							/>
-							<h3>{oneSlope.name}</h3>
-							<h4>{oneSlope.country}</h4>
-							<p> rating: {oneSlope.rating} </p>
-							<p>{oneSlope.comments}</p>
-							<p>Date: {oneSlope.created}</p>
-							<p>By: {oneSlope.user}</p>
-						</Link>
-					</div>
-				);
-			})}
+			<div className="SlopesListPage-cointainer">
+				{slopes.map((oneSlope) => {
+					return (
+						<div className="SlopeCard card" key={oneSlope._id}>
+							<Link to={"/slope/detail/" + oneSlope._id}>
+								<div className="slope-list-card">
+									<div className="slope-card-image-col">
+										<img
+											src={oneSlope.image}
+											alt=""
+											style={{
+												height: "300px",
+												width: "75%",
+												overflow: "scroll",
+											}}
+										/>
+									</div>
+									<div className="slope-card-info-col">
+										<h3>
+											<b>{oneSlope.name}</b>
+										</h3>
+										<h4>{oneSlope.country}</h4>
+										<p> Rating: {oneSlope.rating} </p>
+									</div>
+								</div>
+							</Link>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

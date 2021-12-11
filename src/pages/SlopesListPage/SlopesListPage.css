@@ -1,0 +1,25 @@
+body {
+	background-image: url("./image17.jpeg");
+	background-size: 103%;
+	height: auto;
+	color: white;
+}
+
+.SlopesListPage-cointainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 20px;
+}
+
+.SlopesListPage-cointainer {
+	text-decoration: none;
+}
+
+.slope-list-card {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	border: 1px solid rgb(191, 199, 255);
+	padding: 20px;
+}
