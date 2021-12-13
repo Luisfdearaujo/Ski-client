@@ -1,6 +1,7 @@
 .navbar-shortcuts {
 	display: flex;
 	text-decoration: none;
+	margin-left: 160px;
 }
 button {
 	display: inline-block;

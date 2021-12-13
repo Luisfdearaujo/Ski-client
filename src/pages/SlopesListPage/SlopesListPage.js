@@ -6,6 +6,7 @@ import styles from "./SlopesListPage.css";
 
 function SlopesListPage() {
 	const [slopes, setSlopes] = useState([]);
+	const [search, setSearch] = useState("");
 
 	const getAllSlopes = async () => {
 		try {
@@ -25,40 +26,69 @@ function SlopesListPage() {
 	return (
 		<div className="SlopesListPage">
 			<h3>Slopes</h3>
+			<div class="container">
+				<div class="row height d-flex justify-content-center align-items-center">
+					<div class="col-md-6">
+						<div class="form">
+							{" "}
+							<i class="fa fa-search"></i>{" "}
+							<input
+								type="text"
+								class="form-control form-input"
+								placeholder="Search anything..."
+								onChange={(event) => {
+									setSearch(event.target.value);
+								}}
+							/>{" "}
+							<span class="left-pan">
+								<i class="fa fa-search"></i>
+							</span>{" "}
+						</div>
+					</div>
+				</div>
+			</div>
 			<Link to={"/slopes/add"}>
 				<button>Add Slope</button>
 			</Link>
 
 			{/* <Add refreshProjects={getAllProjects} /> */}
 			<div className="SlopesListPage-cointainer">
-				{slopes.map((oneSlope) => {
-					return (
-						<div className="SlopeCard card" key={oneSlope._id}>
-							<Link to={"/slope/detail/" + oneSlope._id}>
-								<div className="slope-list-card">
-									<div className="slope-card-image-col">
-										<img
-											src={oneSlope.image}
-											alt=""
-											style={{
-												height: "300px",
-												width: "75%",
-												overflow: "scroll",
-											}}
-										/>
+				{slopes
+					.filter((val) => {
+						if (search === "") {
+							return val;
+						} else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+							return val;
+						}
+					})
+					.map((oneSlope) => {
+						return (
+							<div className="SlopeCard card" key={oneSlope._id}>
+								<Link to={"/slope/detail/" + oneSlope._id}>
+									<div className="slope-list-card">
+										<div className="slope-card-image-col">
+											<img
+												src={oneSlope.image}
+												alt=""
+												style={{
+													height: "300px",
+													width: "75%",
+													overflow: "scroll",
+												}}
+											/>
+										</div>
+										<div className="slope-card-info-col">
+											<h3>
+												<b>{oneSlope.name}</b>
+											</h3>
+											<h4>{oneSlope.country}</h4>
+											<p> Rating: {oneSlope.rating} </p>
+										</div>
 									</div>
-									<div className="slope-card-info-col">
-										<h3>
-											<b>{oneSlope.name}</b>
-										</h3>
-										<h4>{oneSlope.country}</h4>
-										<p> Rating: {oneSlope.rating} </p>
-									</div>
-								</div>
-							</Link>
-						</div>
-					);
-				})}
+								</Link>
+							</div>
+						);
+					})}
 			</div>
 		</div>
 	);

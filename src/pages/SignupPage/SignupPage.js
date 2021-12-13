@@ -3,72 +3,91 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import authService from "../../services/auth.service";
+import fileService from "../../services/file.services";
 
 function SignupPage(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [name, setName] = useState("");
+	const [errorMessage, setErrorMessage] = useState(undefined);
+	const [imageUrl, setImageUrl] = useState(""); // <-- used for image upload input
+	const [allowSubmit, setAllowSubmit] = useState(false);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value);
+	const handleEmail = (e) => setEmail(e.target.value);
+	const handlePassword = (e) => setPassword(e.target.value);
+	const handleName = (e) => setName(e.target.value);
 
-  const handleSignupSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      // Create an object representing the request body
-      const requestBody = { email, password, name };
+	const handleSignupSubmit = async (e) => {
+		try {
+			e.preventDefault();
+			// Create an object representing the request body
+			const requestBody = { email, password, name, image: imageUrl };
 
-      const authToken = localStorage.getItem('authToken');
-      await axios.post(
-        'http://localhost:5005/auth/signup',
-        requestBody,
-        { headers: { Authorization: `Bearer ${authToken}`} }
-      )
+			const authToken = localStorage.getItem("authToken");
+			await axios.post("http://localhost:5005/auth/signup", requestBody, {
+				headers: { Authorization: `Bearer ${authToken}` },
+			});
 
-      // or with a service
-      // await authService.signup(requestBody);
+			// or with a service
+			// await authService.signup(requestBody);
 
-      
-      // If the request is successful navigate to login page
-      navigate("/login");
-    } catch (error) {
-      // If the request resolves with an error, set the error message in the state
-      setErrorMessage("Something went wrong");
-    }
-  };
+			// If the request is successful navigate to login page
+			navigate("/login");
+		} catch (error) {
+			// If the request resolves with an error, set the error message in the state
+			setErrorMessage("Something went wrong");
+		}
+	};
+	const handleFileUpload = async (e) => {
+		try {
+			const uploadData = new FormData();
 
-  return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+			uploadData.append("imageUrl", e.target.files[0]); // <-- set the file in the form
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
+			const response = await fileService.uploadImage(uploadData);
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+			setImageUrl(response.data.secure_url);
+			setAllowSubmit(true);
+		} catch (error) {
+			console.log(error);
+			setErrorMessage("Failed to upload the file");
+		}
+	};
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+	return (
+		<div className="SignupPage">
+			<h1>Sign Up</h1>
 
-        <button type="submit">Sign Up</button>
-      </form>
+			<form onSubmit={handleSignupSubmit}>
+				<label>Email:</label>
+				<input type="text" name="email" value={email} onChange={handleEmail} />
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+				<label>Password:</label>
+				<input
+					type="password"
+					name="password"
+					value={password}
+					onChange={handlePassword}
+				/>
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
-    </div>
-  );
+				<label>Name:</label>
+				<input type="text" name="name" value={name} onChange={handleName} />
+
+				<input type="file" onChange={handleFileUpload} />
+
+				<button type="submit" disabled={!allowSubmit}>
+					Sign Up
+				</button>
+			</form>
+
+			{errorMessage && <p className="error-message">{errorMessage}</p>}
+
+			<p>Already have account?</p>
+			<Link to={"/login"}> Login</Link>
+		</div>
+	);
 }
 
 export default SignupPage;

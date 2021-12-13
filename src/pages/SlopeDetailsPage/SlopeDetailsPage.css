@@ -4,14 +4,14 @@
 	margin-top: 80px;
 	padding: 40px;
 }
-.slope-heading {
+.SlopesDetailsPage .slope-heading {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	font-size: 1.5rem;
 	font-weight: bold;
 }
-.slope-subheading {
+.SlopesDetailsPage .slope-subheading {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
