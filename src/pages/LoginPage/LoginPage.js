@@ -33,7 +33,7 @@ function LoginPage(props) {
 			);
 
 			// or with a service
-			// const response = await authService.login(requestBody);
+			//const response = await authService.login(requestBody);
 
 			// Save the token and set the user as logged in ...
 			const token = response.data.authToken;

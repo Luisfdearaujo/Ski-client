@@ -87,6 +87,11 @@ function EditSlopePage(props) {
 				/>
 
 				<label>Level:</label>
+				<select name="level" id="level">
+					<option value="beginner">beginner</option>
+					<option value="intermediate">intermediate</option>
+					<option value="pro">pro</option>
+				</select>
 				<input
 					type="text"
 					name="level"

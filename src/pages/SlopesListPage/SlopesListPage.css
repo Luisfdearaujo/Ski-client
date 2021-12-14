@@ -1,7 +1,17 @@
 .SlopesListPage {
-	background-image: url("./image17.jpeg");
-	background-size: 100%;
-	color: white;
+	background: #2980b9; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#ffffff,
+		#6dd5fa,
+		#2980b9
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#ffffff,
+		#6dd5fa,
+		#2980b9
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .SlopesListPage-cointainer {
@@ -21,4 +31,8 @@
 	flex-direction: column;
 	border: 1px solid rgb(191, 199, 255);
 	padding: 20px;
+}
+
+.SlopesListPage .slope-card-info-col {
+	margin-top: 30px;
 }

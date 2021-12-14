@@ -56,53 +56,65 @@ function AddSlopePage() {
 	};
 
 	return (
-		<div className="AddSlope">
-			<h1>Add Slope</h1>
+		<div className="AddSlopePage">
+			<div className="image">
+				<h1>Add Slope</h1>
 
-			<form onSubmit={handleSubmit}>
-				<label>Name</label>
-				<input type="text" name="name" value={name} onChange={handleName} />
+				<form onSubmit={handleSubmit}>
+					<label>Name</label>
+					<input type="text" name="name" value={name} onChange={handleName} />
 
-				<label>Country</label>
-				<input
-					type="text"
-					name="country"
-					value={country}
-					onChange={handleCountry}
-				/>
+					<label>Country</label>
+					<input
+						type="text"
+						name="country"
+						value={country}
+						onChange={handleCountry}
+					/>
 
-				<label>Level</label>
-				<input type="text" name="level" value={level} onChange={handleLevel} />
+					<label>Level</label>
+					<input
+						type="text"
+						name="level"
+						value={level}
+						onChange={handleLevel}
+					/>
 
-				<label>image</label>
-				<input type="text" name="image" value={image} onChange={handleImage} />
+					<label>image</label>
+					<input
+						type="text"
+						name="image"
+						value={image}
+						onChange={handleImage}
+					/>
 
-				<label>Date</label>
-				<input
-					type="date"
-					name="created"
-					value={created}
-					onChange={handleCreate}
-				/>
+					<label>Date</label>
+					<input
+						type="date"
+						name="created"
+						value={created}
+						onChange={handleCreate}
+					/>
 
-				<label>Comments</label>
-				<input
-					type="text"
-					name="comments"
-					value={comments}
-					onChange={handleComments}
-				/>
+					<label>Comments</label>
+					<input
+						type="text"
+						name="comments"
+						value={comments}
+						onChange={handleComments}
+					/>
 
-				<label>Rating</label>
-				<input
-					type="number"
-					name="rating"
-					value={rating}
-					onChange={handleRating}
-				/>
+					<label>Rating</label>
+					<input
+						type="number"
+						name="rating"
+						value={rating}
+						onChange={handleRating}
+					/>
 
-				<button type="submit">Create Slope</button>
-			</form>
+					<button type="submit">Create Slope</button>
+				</form>
+			</div>
 		</div>
 	);
 }

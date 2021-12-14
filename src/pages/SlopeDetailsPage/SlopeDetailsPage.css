@@ -10,10 +10,21 @@
 	justify-content: space-between;
 	font-size: 1.5rem;
 	font-weight: bold;
+	height: 30px;
+	margin: 0px 10px 10px 20px;
 }
 .SlopesDetailsPage .slope-subheading {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin-top: -20px;
+	margin: 0px 10px 10px 20px;
+}
+
+.SlopesDetailsPage .image {
+	margin: 30px;
+}
+
+.SlopesDetailsPage form {
+	display: flex;
+	justify-content: center;
 }

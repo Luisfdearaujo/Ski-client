@@ -59,12 +59,12 @@ function AuthProviderWrapper({ children }) {
 
 
   return (
-    <AuthContext.Provider
-      value={{ isLoggedIn, isLoading, user, logInUser, logOutUser }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+		<AuthContext.Provider
+			value={{ isLoggedIn, isLoading, user, logInUser, logOutUser, setUser }}
+		>
+			{children}
+		</AuthContext.Provider>
+	);
 }
 
 export { AuthContext, AuthProviderWrapper };

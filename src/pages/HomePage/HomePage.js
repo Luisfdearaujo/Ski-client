@@ -26,15 +26,17 @@ function HomePage() {
 	}, []);
 
 	return (
-		<div ClassName="container-all">
-			<div ClassName="container-part">
-				<h1>SnowHill</h1>
-				<h3> Keep up with your favorite resorts </h3>
-				<Link to={"/slopes"}>
-					<button>Checkout Resorts</button>
-				</Link>
-				<p>{slope.name}</p>
-				<p>{slope.lifts}</p>
+		<div className="HomePage">
+			<div className="container-part">
+				<div className="container-part2">
+					<h1 className="container-h1">SnowHill</h1>
+					<h3> Get in the right track </h3>
+					<Link to={"/slopes"}>
+						<button>Checkout Resorts</button>
+					</Link>
+					<p>{slope.name}</p>
+					<p>{slope.lifts}</p>
+				</div>
 			</div>
 		</div>
 	);

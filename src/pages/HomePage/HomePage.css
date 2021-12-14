@@ -1,4 +1,18 @@
-body {
+.HomePage .container-part2 {
 	background-image: url("./image6.jpg");
 	background-size: cover;
+	height: 100vh;
+}
+
+.container-part2 button {
+	position: relative;
+	top: 150px;
+}
+.container-part2 h3 {
+	position: relative;
+	top: 140px;
+}
+.container-part2 h1 {
+	position: relative;
+	top: 130px;
 }

@@ -34,9 +34,10 @@ function SlopeDetailsPage() {
 					</Link>
 				</div>
 				<img
+					className="image"
 					src={slope.image}
 					alt=""
-					style={{ height: "300px", overflow: "scroll" }}
+					style={{ height: "350px", overflow: "scroll" }}
 				/>
 				<div className="slope-heading">
 					<h3>{slope.name}</h3>

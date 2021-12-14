@@ -24,25 +24,27 @@ function SlopesListPage() {
 	}, []);
 
 	return (
-		<div className="SlopesListPage">
-			<h3>Slopes</h3>
-			<div class="container">
-				<div class="row height d-flex justify-content-center align-items-center">
-					<div class="col-md-6">
-						<div class="form">
-							{" "}
-							<i class="fa fa-search"></i>{" "}
-							<input
-								type="text"
-								class="form-control form-input"
-								placeholder="Search anything..."
-								onChange={(event) => {
-									setSearch(event.target.value);
-								}}
-							/>{" "}
-							<span class="left-pan">
-								<i class="fa fa-search"></i>
-							</span>{" "}
+		<div className="SlopesListPage" >
+			<div className="SlopesListPage-all">
+				<h3>Slopes</h3>
+				<div className="container">
+					<div className="row height d-flex justify-content-center align-items-center">
+						<div className="col-md-6">
+							<div className="form">
+								{" "}
+								<i className="fa fa-search"></i>{" "}
+								<input
+									type="text"
+									class="form-control form-input"
+									placeholder="Search anything..."
+									onChange={(event) => {
+										setSearch(event.target.value);
+									}}
+								/>{" "}
+								<span class="left-pan">
+									<i class="fa fa-search"></i>
+								</span>{" "}
+							</div>
 						</div>
 					</div>
 				</div>
