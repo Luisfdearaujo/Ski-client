@@ -1,5 +1,16 @@
 .AddSlopePage .image {
-	background-image: url("./image13.jpeg");
+	background-image: url("./image21.jpg");
 	background-size: cover;
 	height: 100vh;
+}
+.AddSlopePage .form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.AddSlopePage button {
+	background-color: white;
+	color: black;
+}
+.AddSlopePage{
 }

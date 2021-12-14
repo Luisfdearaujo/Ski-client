@@ -1,0 +1,9 @@
+.Login-img {
+	background-image: url("./image19\ -\ cópia.jpeg");
+	background-size: cover;
+	height: 110vh;
+}
+.LoginPage button {
+	background-color: rgb(242, 221, 224);
+	color: black;
+}

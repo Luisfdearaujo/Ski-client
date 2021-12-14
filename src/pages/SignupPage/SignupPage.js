@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import SignupPageStyle from "./SignupPageStyle.css";
 
 import authService from "../../services/auth.service";
 import fileService from "../../services/file.services";
@@ -57,35 +58,42 @@ function SignupPage(props) {
 	};
 
 	return (
-		<div className="SignupPage">
-			<h1>Sign Up</h1>
+		<div className="Signup-img">
+			<div className="SignupPage">
+				<h1>Sign Up</h1>
 
-			<form onSubmit={handleSignupSubmit}>
-				<label>Email:</label>
-				<input type="text" name="email" value={email} onChange={handleEmail} />
+				<form onSubmit={handleSignupSubmit}>
+					<label>Email:</label>
+					<input
+						type="text"
+						name="email"
+						value={email}
+						onChange={handleEmail}
+					/>
 
-				<label>Password:</label>
-				<input
-					type="password"
-					name="password"
-					value={password}
-					onChange={handlePassword}
-				/>
+					<label>Password:</label>
+					<input
+						type="password"
+						name="password"
+						value={password}
+						onChange={handlePassword}
+					/>
 
-				<label>Name:</label>
-				<input type="text" name="name" value={name} onChange={handleName} />
+					<label>Name:</label>
+					<input type="text" name="name" value={name} onChange={handleName} />
 
-				<input type="file" onChange={handleFileUpload} />
+					<input type="file" onChange={handleFileUpload} />
 
-				<button type="submit" disabled={!allowSubmit}>
-					Sign Up
-				</button>
-			</form>
+					<button type="submit" disabled={!allowSubmit}>
+						Sign Up
+					</button>
+				</form>
 
-			{errorMessage && <p className="error-message">{errorMessage}</p>}
+				{errorMessage && <p className="error-message">{errorMessage}</p>}
 
-			<p>Already have account?</p>
-			<Link to={"/login"}> Login</Link>
+				<p>Already have account?</p>
+				<Link to={"/login"}> Login</Link>
+			</div>
 		</div>
 	);
 }

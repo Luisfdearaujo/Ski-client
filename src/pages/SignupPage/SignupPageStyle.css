@@ -1,0 +1,9 @@
+.Signup-img {
+	background-image: url("./image19.jpeg");
+	background-size: cover;
+	height: 110vh;
+}
+.SignupPage button {
+	background-color: rgb(242, 221, 224);
+	color: black;
+}

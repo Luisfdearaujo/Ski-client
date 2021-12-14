@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import styles from "./SlopeDetailsPage.css";
+import exampleService from "../../services/slope.service";
 
 function SlopeDetailsPage() {
 	const [slope, setSlope] = useState([]);
@@ -23,6 +24,12 @@ function SlopeDetailsPage() {
 
 		getSlope();
 	}, []);
+
+	const deleteSlope = async () => {
+		const response = await exampleService.deleteProject(slopeId);
+		const responseData = response.data;
+		setSlope(responseData);
+	};
 
 	return (
 		<div className="SlopesDetailsPage">
@@ -50,12 +57,15 @@ function SlopeDetailsPage() {
 				</div>
 				<form>
 					<label>
-						<textarea name="" id="" cols="10" rows="2">
+						<textarea name="" id="" cols="10" rows="1">
 							{slope.comments}
 						</textarea>
 					</label>
 				</form>
 				<p>By: {slope.user}</p>
+				<Link to={"/slopes"}>
+					<button onClick={deleteSlope}>Delete</button>
+				</Link>
 			</div>
 		</div>
 	);

@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import styles from "./AddSlopePage.css";
 
 function AddSlopePage() {
 	const [name, setName] = useState("");
@@ -60,7 +61,7 @@ function AddSlopePage() {
 			<div className="image">
 				<h1>Add Slope</h1>
 
-				<form onSubmit={handleSubmit}>
+				<form className="form" onSubmit={handleSubmit}>
 					<label>Name</label>
 					<input type="text" name="name" value={name} onChange={handleName} />
 

@@ -52,13 +52,13 @@ nav li {
 }
 
 .card {
-	width: 400px;
+	width: 360px;
 	padding: 10px;
 	box-shadow: 0px 2px 3px grey;
 	margin: 0 auto;
 	margin-bottom: 20px;
 	background: #94a7c8;
-	border-radius: 4px;
+	border-radius: 10px;
 }
 
 .ProjectCard h3::after {
@@ -88,11 +88,11 @@ nav li {
 
 .SignupPage,
 .LoginPage {
-	background-color: #608dd5;
+	background-color: #dae8ff;
 }
 
 .LoginPage {
-	background-color: #94a7c8;
+	background-color: #dae8ff;
 }
 
 .EditProjectPage form,
