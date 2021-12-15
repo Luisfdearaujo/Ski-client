@@ -1,18 +1,9 @@
 .SlopesListPage {
-	background: #2980b9; 
-	background: -webkit-linear-gradient(
-		to right,
-		#ffffff,
-		#6dd5fa,
-		#2980b9
-	); 
-	background: linear-gradient(
-		to right,
-		#ffffff,
-		#6dd5fa,
-		#2980b9
-	); 
+	background: #2980b9;
+	background: -webkit-linear-gradient(to right, #ffffff, #6dd5fa, #2980b9);
+	background: linear-gradient(to right, #ffffff, #6dd5fa, #2980b9);
 	min-height: 100vh;
+	padding: 20px;
 }
 
 .SlopesListPage-cointainer {
@@ -30,13 +21,15 @@
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: column;
-	border: 1px solid rgb(191, 199, 255);
+	border: 1px solid rgb(188, 190, 203);
 	padding: 20px;
+	background: #fff8eb;
 }
 
 .SlopesListPage .slope-card-info-col {
 	margin-top: 30px;
 }
 
-.SlopesListPage button{
+.SlopesListPage button {
+	color: black;
 }

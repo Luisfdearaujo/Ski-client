@@ -27,9 +27,13 @@ function SignupPage(props) {
 			const requestBody = { email, password, name, image: imageUrl };
 
 			const authToken = localStorage.getItem("authToken");
-			await axios.post("http://localhost:5005/auth/signup", requestBody, {
-				headers: { Authorization: `Bearer ${authToken}` },
-			});
+			await axios.post(
+				`${process.env.REACT_APP_SERVER_URL}/auth/signup`,
+				requestBody,
+				{
+					headers: { Authorization: `Bearer ${authToken}` },
+				}
+			);
 
 			// or with a service
 			// await authService.signup(requestBody);

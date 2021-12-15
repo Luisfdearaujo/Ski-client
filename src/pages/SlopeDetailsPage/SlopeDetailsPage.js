@@ -6,10 +6,11 @@ import exampleService from "../../services/slope.service";
 
 function SlopeDetailsPage() {
 	const [slope, setSlope] = useState([]);
+	const [slopeData, setSlopeData] = useState("");
 	const { slopeId } = useParams();
 	// Make an axios call when the component is created
 	// and get the project details from the server
-	const apiRest = "http://localhost:5005/api/slope/current";
+	const apiRest = `${process.env.REACT_APP_SERVER_URL}/api/slope/current`;
 
 	useEffect(() => {
 		const getSlope = async () => {
@@ -17,6 +18,11 @@ function SlopeDetailsPage() {
 				const response = await axios.get(`${apiRest}/${slopeId}`); //with +  / the code breaks
 				const oneSlope = response.data;
 				setSlope(oneSlope);
+
+				const dataStr = response.data.created.toString();
+				const data = dataStr.substring(0, 10);
+				console.log(data);
+				setSlopeData(data);
 			} catch (error) {
 				console.log(error);
 			}
@@ -33,9 +39,11 @@ function SlopeDetailsPage() {
 
 	return (
 		<div className="SlopesDetailsPage">
-			<h3>Slopes</h3>
+			<h3>
+				<b>Slopes</b>
+			</h3>
 			<div className="SlopeCard card" key={slope._id}>
-				<div>
+				<div className="container">
 					<Link to={"/slope/edit/" + slope._id}>
 						<button>Edit Slope</button>
 					</Link>
@@ -53,7 +61,7 @@ function SlopeDetailsPage() {
 				<div className="slope-subheading">
 					<p> Rating: {slope.rating} </p>
 
-					<p>Date: {slope.created}</p>
+					<p>Date: {slopeData}</p>
 				</div>
 				<form>
 					<label>
@@ -62,7 +70,7 @@ function SlopeDetailsPage() {
 						</textarea>
 					</label>
 				</form>
-				<p>By: {slope.user}</p>
+				{slope.user && <p>Created by: {slope.user.name}</p>}
 				<Link to={"/slopes"}>
 					<button onClick={deleteSlope}>Delete</button>
 				</Link>

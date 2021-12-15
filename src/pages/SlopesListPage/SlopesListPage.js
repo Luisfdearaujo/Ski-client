@@ -11,7 +11,7 @@ function SlopesListPage() {
 	const getAllSlopes = async () => {
 		try {
 			const response = await axios.get(
-				"http://localhost:5005/api/slope/current" //params filter/find
+				`${process.env.REACT_APP_SERVER_URL}/api/slope/current` //params filter/find
 			);
 			setSlopes(response.data);
 		} catch (error) {
@@ -24,9 +24,11 @@ function SlopesListPage() {
 	}, []);
 
 	return (
-		<div className="SlopesListPage" >
+		<div className="SlopesListPage">
 			<div className="SlopesListPage-all">
-				<h3>Slopes</h3>
+				<h3>
+					<b> Slopes</b>
+				</h3>
 				<div className="container">
 					<div className="row height d-flex justify-content-center align-items-center">
 						<div className="col-md-6">

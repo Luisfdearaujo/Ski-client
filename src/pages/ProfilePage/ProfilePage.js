@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
+import styles from "./ProfilePage.css";
 
 import fileService from "../../services/file.services";
 const authToken = localStorage.getItem("authToken");
@@ -26,7 +27,7 @@ function ProfilePage() {
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					"http://localhost:5005/api/users/current",
+					`${process.env.REACT_APP_SERVER_URL}/api/users/current`,
 					{ headers: { Authorization: `Bearer ${authToken}` } }
 				);
 				const oneUser = response.data;
@@ -51,7 +52,7 @@ function ProfilePage() {
 			};
 
 			const response = await axios.put(
-				"http://localhost:5005/api/user/current/",
+				`${process.env.REACT_APP_SERVER_URL}/api/user/current`,
 				updatedUser,
 				{
 					headers: { Authorization: `Bearer ${authToken}` },
@@ -84,32 +85,34 @@ function ProfilePage() {
 			<h1>Profile Page</h1>
 			<div className="ProfilePage-container">
 				<form onSubmit={handleSubmit}>
-					<label>Email:</label>
-					<input
-						type="text"
-						name="email"
-						value={email}
-						onChange={handleEmail}
-						readOnly
-					/>
+					<div className="form">
+						<label>Email:</label>
+						<input
+							type="text"
+							name="email"
+							value={email}
+							onChange={handleEmail}
+							readOnly
+						/>
 
-					<label>Password:</label>
-					<input
-						type="password"
-						name="password"
-						value={password}
-						onChange={handlePassword}
-					/>
+						<label>Password:</label>
+						<input
+							type="password"
+							name="password"
+							value={password}
+							onChange={handlePassword}
+						/>
 
-					<label>Name:</label>
-					<input type="text" name="name" value={name} onChange={handleName} />
+						<label>Name:</label>
+						<input type="text" name="name" value={name} onChange={handleName} />
 
-					<img src={imageUrl} width="100px" alt="" />
-					<input type="file" onChange={handleFileUpload} />
+						<img src={imageUrl} width="100px" alt="" />
+						<input type="file" onChange={handleFileUpload} />
 
-					<button type="submit" disabled={allowSubmit}>
-						Update Profile
-					</button>
+						<button type="submit" disabled={allowSubmit}>
+							Update Profile
+						</button>
+					</div>
 				</form>
 
 				{errorMessage && <p className="error-message">{errorMessage}</p>}

@@ -1,1 +1,18 @@
+.ProfilePage .form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
+.ProfilePage {
+	background-image: url("./image15.jpeg");
+	background-size: cover;
+	height: 120vh;
+}
+.ProfilePage button {
+	color: black;
+	position: relative;
+	left: 200px;
+	bottom: 80px;
+	font-weight: bold;
+}
