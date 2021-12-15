@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 import styles from "./EditSlopePage.css";
 
-const API_URL = `${process.env.REACT_APP_SERVER_URL}/api/slope/current`;
+const API_URL =
+	`${process.env.REACT_APP_SERVER_URL}` || "http://localhost:5005";
 
 function EditSlopePage(props) {
 	const [name, setName] = useState("");
@@ -21,7 +22,7 @@ function EditSlopePage(props) {
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					"http://localhost:5005/api/slope/current/" + slopeId
+					API_URL + "/api/slope/current/" + slopeId
 				);
 				const oneSlope = response.data;
 
@@ -51,7 +52,7 @@ function EditSlopePage(props) {
 			};
 
 			await axios.put(
-				"http://localhost:5005/api/slope/current/" + slopeId,
+				`${process.env.REACT_APP_SERVER_URL}/api/slope/current/` + slopeId,
 				updatedSlope
 			);
 

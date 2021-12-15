@@ -28,7 +28,7 @@ function LoginPage(props) {
 
 			const authToken = localStorage.getItem("authToken");
 			const response = await axios.post(
-				"http://localhost:5005/auth/login",
+				`${process.env.REACT_APP_SERVER_URL}/auth/login`,
 				requestBody,
 				{ headers: { Authorization: `Bearer ${authToken}` } }
 			);
