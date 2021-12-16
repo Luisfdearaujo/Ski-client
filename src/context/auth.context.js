@@ -5,17 +5,10 @@ import authService from "../services/auth.service";
 const AuthContext = createContext();
 
 function AuthProviderWrapper({ children }) {
-<<<<<<< HEAD
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [user, setUser] = useState(null);
-
-	const [isLoading, setIsLoading] = useState(true);
-=======
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [flag, setFlag] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
->>>>>>> develop
 
 	const verifyStoredToken = async () => {
 		try {
