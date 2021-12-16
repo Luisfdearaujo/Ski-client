@@ -4,6 +4,8 @@ import { AuthContext } from "../../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import styles from "./AddSlopePage.css";
 
+import fileService from "../../services/file.services";
+
 function AddSlopePage() {
 	const [name, setName] = useState("");
 	const [country, setCountry] = useState("");
@@ -12,6 +14,9 @@ function AddSlopePage() {
 	const [created, setCreated] = useState("");
 	const [comments, setComments] = useState("");
 	const [rating, setRating] = useState(1);
+	const [imageUrl, setImageUrl] = useState("");
+	const [allowSubmit, setAllowSubmit] = useState(false);
+	const [errorMessage, setErrorMessage] = useState(undefined);
 
 	const { user } = useContext(AuthContext);
 
@@ -40,9 +45,11 @@ function AddSlopePage() {
 				user: user._id,
 			};
 
-		
 			console.log("test", slopeData);
-			await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/slope/current`, slopeData);
+			await axios.post(
+				`${process.env.REACT_APP_SERVER_URL}/api/slope/current`,
+				slopeData
+			);
 			//Clear the form
 			setName("");
 			setCountry("");
@@ -57,6 +64,23 @@ function AddSlopePage() {
 			console.log(error);
 		}
 	};
+
+	// const handleFileUpload = async (e) => {
+	// 	setAllowSubmit(true);
+	// 	try {
+	// 		const uploadData = new FormData();
+
+	// 		uploadData.append("imageUrl", e.target.files[0]); // <-- set the file in the form
+
+	// 		const response = await fileService.uploadImage(uploadData);
+
+	// 		setImageUrl(response.data.secure_url);
+	// 		setAllowSubmit(false);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 		setErrorMessage("Failed to upload the file");
+	// 	}
+	// };
 
 	return (
 		<div className="AddSlopePage">
@@ -83,6 +107,9 @@ function AddSlopePage() {
 							value={level}
 							onChange={handleLevel}
 						/>
+
+						{/* <img src={imageUrl} width="100px" alt="" />
+						<input type="file" onChange={handleFileUpload} /> */}
 
 						<label>image</label>
 						<input
@@ -116,7 +143,9 @@ function AddSlopePage() {
 							onChange={handleRating}
 						/>
 
-						<button type="submit">Create Slope</button>
+						<button type="submit" disabled={allowSubmit}>
+							Create Slope
+						</button>
 					</form>
 				</div>
 			</div>

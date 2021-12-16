@@ -36,7 +36,7 @@ textarea {
 }
 
 nav {
-	background: #111e3a;
+	background: #0d172d;
 	color: white;
 	padding: 0px 20px;
 	box-shadow: 0px 1px 2px gray;
@@ -116,7 +116,7 @@ nav li {
 .Navbar {
 	padding: 5px 20px;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 }
 
@@ -125,6 +125,8 @@ nav li {
 }
 
 .profile-img {
+	position: relative;
+	left: 280px;
 	width: 65px;
 	border-radius: 35px;
 	border: 2px solid black;
