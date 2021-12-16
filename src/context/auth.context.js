@@ -7,7 +7,7 @@ const AuthContext = createContext();
 function AuthProviderWrapper({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-
+  const [flag, setFlag] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
 
   const verifyStoredToken = async () => {
@@ -60,7 +60,7 @@ function AuthProviderWrapper({ children }) {
 
   return (
 		<AuthContext.Provider
-			value={{ isLoggedIn, isLoading, user, logInUser, logOutUser, setUser }}
+			value={{ isLoggedIn, isLoading, user, logInUser, logOutUser, setUser, setFlag }}
 		>
 			{children}
 		</AuthContext.Provider>

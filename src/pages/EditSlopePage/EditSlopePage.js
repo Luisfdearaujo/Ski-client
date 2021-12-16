@@ -88,11 +88,19 @@ function EditSlopePage(props) {
 					/>
 
 					<label>Level:</label>
-					{/* <select name="level" id="level">
-					<option value="beginner">beginner</option>
-					<option value="intermediate">intermediate</option>
-					<option value="pro">pro</option>
-				</select> */}
+					{/* <select
+						onChange={(e) => setLevel(e.target.value)}
+						selected
+						name="level"
+						id="level"
+					>
+						<option value={level} selected hidden>
+							{level}
+						</option>
+						<option value="beginner">beginner</option>
+						<option value="intermediate">intermediate</option>
+						<option value="pro">pro</option>
+					</select> */}
 					<input
 						name="level"
 						type="text"

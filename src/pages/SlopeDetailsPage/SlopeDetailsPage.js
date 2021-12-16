@@ -1,13 +1,17 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import styles from "./SlopeDetailsPage.css";
 import exampleService from "../../services/slope.service";
+import { AuthContext } from "../../context/auth.context";
 
 function SlopeDetailsPage() {
 	const [slope, setSlope] = useState([]);
 	const [slopeData, setSlopeData] = useState("");
 	const { slopeId } = useParams();
+
+	const navigate = useNavigate();
+	const { setFlag } = useContext(AuthContext);
 	// Make an axios call when the component is created
 	// and get the project details from the server
 	const apiRest = `${process.env.REACT_APP_SERVER_URL}/api/slope/current`;
@@ -35,6 +39,8 @@ function SlopeDetailsPage() {
 		const response = await exampleService.deleteProject(slopeId);
 		const responseData = response.data;
 		setSlope(responseData);
+		setFlag(true)
+		navigate("/slopes");
 	};
 
 	return (

@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddSlopePage from "../AddSlopePage/AddSlopePage";
 import styles from "./SlopesListPage.css";
+import { AuthContext } from "../../context/auth.context";
 
 function SlopesListPage() {
 	const [slopes, setSlopes] = useState([]);
 	const [search, setSearch] = useState("");
+	const { flag, setFlag } = useContext(AuthContext);
+	
 
 	const getAllSlopes = async () => {
 		try {
@@ -17,11 +20,12 @@ function SlopesListPage() {
 		} catch (error) {
 			console.log(error);
 		}
+		setFlag(false);
 	};
 
 	useEffect(() => {
 		getAllSlopes();
-	}, []);
+	}, [flag]);
 
 	return (
 		<div className="SlopesListPage">

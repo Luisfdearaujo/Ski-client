@@ -11,7 +11,7 @@
 .AddSlopePage .image {
 	background-image: url("./image21.jpg");
 	background-size: cover;
-	height: 120vh;
+	height: 140vh;
 }
 .AddSlopePage .form {
 	display: flex;
